@@ -194,27 +194,35 @@ augment = ImageDataGenerator(
 # 7. CNN MODELİNİN TANIMLANMASI
 # (Değişiklik yok)
 print("CNN modeli oluşturuluyor...")
+activation_function = (
+    "relu"  # Aktivasyon fonksiyonunu seç relu, elu, silu, softplus, gelu, ...
+)
 INPUT_SHAPE = (SIZE, SIZE, 3)
 cnn1 = Sequential()
 cnn1.add(
     Conv2D(
-        filters=32, kernel_size=(3, 3), activation="softplus", input_shape=INPUT_SHAPE
+        filters=32,
+        kernel_size=(3, 3),
+        activation=activation_function,
+        input_shape=INPUT_SHAPE,
     )
 )
 cnn1.add(MaxPooling2D(pool_size=(2, 2)))
 cnn1.add(BatchNormalization(axis=-1))
-cnn1.add(Conv2D(filters=64, kernel_size=(3, 3), activation="softplus"))
+cnn1.add(Conv2D(filters=64, kernel_size=(3, 3), activation=activation_function))
 cnn1.add(MaxPooling2D(pool_size=(2, 2)))
 cnn1.add(BatchNormalization(axis=-1))
-cnn1.add(Conv2D(filters=128, kernel_size=(3, 3), activation="softplus"))
+cnn1.add(Conv2D(filters=128, kernel_size=(3, 3), activation=activation_function))
 cnn1.add(MaxPooling2D(pool_size=(2, 2)))
-cnn1.add(Conv2D(filters=256, kernel_size=(3, 3), activation="softplus"))
+cnn1.add(Conv2D(filters=256, kernel_size=(3, 3), activation=activation_function))
 cnn1.add(MaxPooling2D(pool_size=(2, 2)))
 cnn1.add(Flatten())
 cnn1.add(Dropout(0.4))
 cnn1.add(
     Dense(
-        256, activation="softplus", kernel_regularizer=tf.keras.regularizers.l2(0.002)
+        256,
+        activation=activation_function,
+        kernel_regularizer=tf.keras.regularizers.l2(0.002),
     )
 )
 cnn1.add(Dense(NUM_CLASSES, activation="softmax"))
@@ -274,7 +282,7 @@ print("\nSınıflandırma Raporu:")
 print(classification_report(y_true, y_pred, target_names=class_names_list))
 
 # 10. MODELİ KAYDETME (YENİ BÖLÜM)
-model_kayit_adi = "pamuk_modeli_softplus.keras"
+model_kayit_adi = f"cotton_model_{activation_function}.keras"
 print(f"\nModel {model_kayit_adi} olarak kaydediliyor...")
 cnn1.save(model_kayit_adi)
 print(f"Model başarıyla {model_kayit_adi} klasörüne kaydedildi.")
