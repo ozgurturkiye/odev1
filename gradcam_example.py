@@ -220,27 +220,17 @@ cnn1.add(
 cnn1.add(Dense(NUM_CLASSES, activation="softmax"))
 cnn1.summary()
 
-# 8. MODELİ DERLEME VE EĞİTME
-# (Değişiklik yok, ancak artık daha büyük olan X_train ile çalışacak)
+# 8. MODELİ DERLEME VE KAYITLI AĞIRLIKLARI YÜKLEME
 print("\nModel derleniyor...")
-cnn1.compile(
-    optimizer="adam",  # Önceki önerilerdeki gibi learning_rate'i düşürebilirsiniz
-    # optimizer=tf.keras.optimizers.Adam(learning_rate=0.0001), # İyileştirme için
-    loss="categorical_crossentropy",
-    metrics=["accuracy"],
-)
+cnn1.compile(optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"])
 
-batch_size = 32
-epochs = 50  # Veri seti büyüdüğü için 50 epoch'ta kalması iyi bir başlangıç
+model_kayit_adi = "pamuk_modeli_elu.keras"
+print(f"Kayıtlı model {model_kayit_adi} yükleniyor...")
+cnn1.load_weights(model_kayit_adi)  # EĞİTİM YERİNE AĞIRLIKLARI YÜKLÜYORUZ
+print("Model başarıyla yüklendi.")
 
-print("Model (Orijinal+Augmented Veri) eğitiliyor...")
-history = cnn1.fit(
-    augment.flow(X_train, y_train, batch_size=batch_size),
-    epochs=epochs,
-    validation_data=(X_test, y_test),  # Test seti hala SADECE orijinallerden oluşuyor
-    steps_per_epoch=len(X_train) // batch_size,
-)
-print("Eğitim tamamlandı.")
+# Artık 'history' değişkenimiz olmayacak, bu yüzden 9. BÖLÜM'deki
+# grafik çizdirme kodları hata verecektir. O satırları da yorum (#) yapın.
 
 # 9. MODELİ DEĞERLENDİRME VE SONUÇLARI GÖRSELLEŞTİRME
 # (Değişiklik yok)
@@ -248,7 +238,7 @@ print("\nTest seti üzerinde model değerlendiriliyor:")
 loss, accuracy = cnn1.evaluate(X_test, y_test)
 print(f"Test Kaybı (Loss): {loss:.4f}")
 print(f"Test Başarısı (Accuracy): {accuracy:.4f}")
-
+"""
 plt.figure(figsize=(12, 5))
 plt.subplot(1, 2, 1)
 plt.plot(history.history["accuracy"], label="Eğitim Başarısı")
@@ -266,7 +256,7 @@ plt.ylabel("Kayıp (Loss)")
 plt.legend()
 plt.tight_layout()
 plt.show()
-
+"""
 y_pred_prob = cnn1.predict(X_test)
 y_pred = np.argmax(y_pred_prob, axis=1)
 y_true = np.argmax(y_test, axis=1)
@@ -278,3 +268,136 @@ model_kayit_adi = "pamuk_modeli_softplus.keras"
 print(f"\nModel {model_kayit_adi} olarak kaydediliyor...")
 cnn1.save(model_kayit_adi)
 print(f"Model başarıyla {model_kayit_adi} klasörüne kaydedildi.")
+
+# 11. GRAD-CAM GÖRSELLEŞTİRME (YENİ BÖLÜM)
+
+print("\nGRAD-CAM çıktıları hazırlanıyor...")
+
+
+def get_gradcam_heatmap(img_array, model, last_conv_layer_name, pred_index=None):
+    """
+    Model, resim ve katman adı verilen bir GRAD-CAM heatmap'i oluşturur.
+    """
+    # Fonksiyonel bir API ile alt model oluştur
+    # Girdi: model.inputs
+    # Çıktı 1: Son conv katmanının çıktısı
+    # Çıktı 2: Modelin tahmin çıktısı
+    grad_model = tf.keras.models.Model(
+        model.inputs, [model.get_layer(last_conv_layer_name).output, model.output]
+    )
+
+    # GradientTape ile eğim (gradient) hesapla
+    with tf.GradientTape() as tape:
+        # Modeli çalıştır ve iki çıktıyı da al
+        last_conv_layer_output, preds = grad_model(img_array)
+
+        if pred_index is None:
+            pred_index = tf.argmax(preds[0])
+        class_channel = preds[:, pred_index]
+
+    # Tahmin edilen sınıfın, son conv katmanına göre eğimini al
+    grads = tape.gradient(class_channel, last_conv_layer_output)
+
+    # Eğimlerin ortalamasını al (Global Average Pooling)
+    pooled_grads = tf.reduce_mean(grads, axis=(0, 1, 2))
+
+    # (512,) shape'indeki eğim ağırlıkları ile (8, 8, 512) shape'indeki
+    # conv katmanı çıktılarını çarparak "ısı haritasını" oluştur
+    last_conv_layer_output = last_conv_layer_output[0]
+    heatmap = last_conv_layer_output @ pooled_grads[..., tf.newaxis]
+    heatmap = tf.squeeze(heatmap)
+
+    # Normalizasyon (0-1 arasına sıkıştır) ve ReLU uygula (negatifleri at)
+    heatmap = tf.maximum(heatmap, 0) / tf.math.reduce_max(heatmap)
+    return heatmap.numpy()
+
+
+def superimpose_gradcam(original_img, heatmap, alpha=0.4):
+    """
+    Isı haritasını orijinal resmin üzerine bindirir.
+    """
+    # Isı haritasını 0-255 arası ve 8-bit integer'a çevir
+    heatmap = np.uint8(255 * heatmap)
+
+    # JET colormap'ini uygula
+    heatmap = cv2.applyColorMap(heatmap, cv2.COLORMAP_JET)
+
+    # Orijinal resim (X_test'ten gelen) 0-1 aralığında float olabilir.
+    # 0-255 aralığına ve 8-bit integer'a çevir (RGB olduğunu varsayıyoruz).
+    if original_img.max() <= 1.0:
+        original_img = np.uint8(255 * original_img)
+
+    # Isı haritasını orijinal resim boyutuna getir (64x64)
+    heatmap_resized = cv2.resize(
+        heatmap, (original_img.shape[1], original_img.shape[0])
+    )
+
+    # Orijinal resim ile ısı haritasını birleştir
+    superimposed_img = cv2.addWeighted(
+        original_img, 1 - alpha, heatmap_resized, alpha, 0
+    )
+
+    return superimposed_img
+
+
+# --- GRAD-CAM UYGULAMASI ---
+# Model özetinden son conv katmanının adını alıyoruz (sizinki 'conv2d_3' idi)
+LAST_CONV_LAYER_NAME = "conv2d_3"
+
+# Test setinden (X_test) denemek için bir resim seçelim
+# Örn: 10. resmi seçelim (bu sayıyı değiştirerek farklı resimlere bakabilirsiniz)
+image_index_to_test = 10
+
+# Orijinal resmi (64, 64, 3) al
+original_img = X_test[image_index_to_test]
+# Orijinal etiketi al
+true_label_index = np.argmax(y_test[image_index_to_test])
+true_label_name = class_names_list[true_label_index]
+
+# Resmi modelin istediği formata (1, 64, 64, 3) getir
+img_array = np.expand_dims(original_img, axis=0)
+
+# Modelin tahminini al
+preds = cnn1.predict(img_array)
+predicted_class_index = np.argmax(preds[0])
+predicted_class_name = class_names_list[predicted_class_index]
+
+print(f"Resim ID: {image_index_to_test}")
+print(f"Gerçek Sınıf: {true_label_name}")
+print(f"Tahmin Edilen Sınıf: {predicted_class_name}")
+
+# GRAD-CAM ısı haritasını oluştur
+heatmap = get_gradcam_heatmap(
+    img_array, cnn1, LAST_CONV_LAYER_NAME, predicted_class_index
+)
+
+# Isı haritasını orijinal resimle birleştir
+gradcam_image = superimpose_gradcam(
+    original_img, heatmap, alpha=0.6
+)  # alpha=0.6 daha belirgin yapar
+
+# Sonuçları göster
+plt.figure(figsize=(10, 5))
+
+# Orijinal Resim
+plt.subplot(1, 3, 1)
+plt.imshow(original_img)
+plt.title(f"Orijinal Resim\nGerçek Sınıf: {true_label_name}")
+plt.axis("off")
+
+# Isı Haritası (Heatmap)
+plt.subplot(1, 3, 2)
+plt.imshow(heatmap, cmap="jet")
+plt.title("Modelin Odaklandığı Yerler\n(Heatmap)")
+plt.axis("off")
+
+# GRAD-CAM (Birleştirilmiş)
+plt.subplot(1, 3, 3)
+plt.imshow(gradcam_image)
+plt.title(f"GRAD-CAM Çıktısı\nTahmin: {predicted_class_name}")
+plt.axis("off")
+
+plt.tight_layout()
+plt.show()
+
+print("GRAD-CAM işlemi tamamlandı.")
