@@ -195,7 +195,7 @@ augment = ImageDataGenerator(
 # (Değişiklik yok)
 print("CNN modeli oluşturuluyor...")
 activation_function = (
-    "softplus"  # Aktivasyon fonksiyonunu seç relu, elu, silu, softplus, gelu, ...
+    "relu"  # Aktivasyon fonksiyonunu seç relu, elu, silu, softplus, gelu, ...
 )
 INPUT_SHAPE = (SIZE, SIZE, 3)
 cnn1 = Sequential()
