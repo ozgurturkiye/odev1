@@ -195,7 +195,7 @@ augment = ImageDataGenerator(
 # (Değişiklik yok)
 print("CNN modeli oluşturuluyor...")
 activation_function = (
-    "relu"  # Aktivasyon fonksiyonunu seç relu, elu, silu, softplus, gelu, ...
+    "elu"  # Aktivasyon fonksiyonunu seç relu, elu, silu, softplus, gelu, ...
 )
 INPUT_SHAPE = (SIZE, SIZE, 3)
 cnn1 = Sequential()
@@ -256,6 +256,7 @@ print("\nTest seti üzerinde model değerlendiriliyor:")
 loss, accuracy = cnn1.evaluate(X_test, y_test)
 print(f"Test Kaybı (Loss): {loss:.4f}")
 print(f"Test Başarısı (Accuracy): {accuracy:.4f}")
+print(f"Kullanılan aktivasyon fonksiyonu: {activation_function}")
 
 plt.figure(figsize=(12, 5))
 plt.subplot(1, 2, 1)

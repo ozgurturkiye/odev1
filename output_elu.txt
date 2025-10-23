@@ -1,16 +1,16 @@
-2025-10-22 19:05:25.583138: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+2025-10-23 21:56:43.074504: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: SSE4.1 SSE4.2 AVX AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
 Orijinal Veri Seti Yükleniyor...
 Yükleniyor: Alternaria Leaf Spot (173 resim)
-Alternaria Leaf Spot: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 173/173 [00:00<00:00, 213.61it/s]
+Alternaria Leaf Spot: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 173/173 [00:00<00:00, 212.94it/s]
 Yükleniyor: Bacterial Blight (218 resim)
-Bacterial Blight: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 218/218 [00:00<00:00, 222.99it/s]
+Bacterial Blight: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 218/218 [00:00<00:00, 234.16it/s]
 Yükleniyor: Fusarium Wilt (337 resim)
-Fusarium Wilt: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 337/337 [00:01<00:00, 226.80it/s]
+Fusarium Wilt: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 337/337 [00:01<00:00, 239.88it/s]
 Yükleniyor: Healthy Leaf (333 resim)
-Healthy Leaf: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 333/333 [00:01<00:00, 232.50it/s]
+Healthy Leaf: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 333/333 [00:01<00:00, 241.32it/s]
 Yükleniyor: Verticillium Wilt (312 resim)
-Verticillium Wilt: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 312/312 [00:01<00:00, 218.48it/s]
+Verticillium Wilt: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 312/312 [00:01<00:00, 223.28it/s]
 Orijinal veri seti yüklendi.
 Orijinal veriler eğitim ve test olarak ayrılıyor...
 Orijinal eğitim seti boyutu: (1098, 64, 64, 3)
@@ -18,15 +18,15 @@ Test seti (sadece orijinallerden) boyutu: (275, 64, 64, 3)
 
 Çoğaltılmış (Augmented) Veri Seti Yükleniyor...
 Yükleniyor: aug_Alternaria_Leaf (987 resim)
-aug_Alternaria_Leaf: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 987/987 [00:02<00:00, 410.59it/s]
+aug_Alternaria_Leaf: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 987/987 [00:02<00:00, 394.16it/s]
 Yükleniyor: aug_Bacterial_Blight (1027 resim)
-aug_Bacterial_Blight: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1027/1027 [00:02<00:00, 398.36it/s]
+aug_Bacterial_Blight: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1027/1027 [00:03<00:00, 339.95it/s]
 Yükleniyor: aug_Fusarium_Wilt (957 resim)
-aug_Fusarium_Wilt: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 957/957 [00:02<00:00, 379.79it/s]
+aug_Fusarium_Wilt: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 957/957 [00:02<00:00, 351.02it/s]
 Yükleniyor: aug_Healthy_Leaf (1015 resim)
-aug_Healthy_Leaf: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1015/1015 [00:02<00:00, 372.48it/s]
+aug_Healthy_Leaf: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1015/1015 [00:02<00:00, 383.65it/s]
 Yükleniyor: aug_Verticillium_Wilt (977 resim)
-aug_Verticillium_Wilt: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 977/977 [00:02<00:00, 392.15it/s]
+aug_Verticillium_Wilt: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 977/977 [00:02<00:00, 394.91it/s]
 Çoğaltılmış veri seti yüklendi.
 
 Orijinal ve Çoğaltılmış eğitim verileri birleştirildi.
@@ -81,122 +81,127 @@ _________________________________________________________________
 Model derleniyor...
 Model (Orijinal+Augmented Veri) eğitiliyor...
 Epoch 1/50
-189/189 [==============================] - 25s 122ms/step - loss: 1.2833 - accuracy: 0.7260 - val_loss: 1.2769 - val_accuracy: 0.6727
+189/189 [==============================] - 24s 117ms/step - loss: 1.6170 - accuracy: 0.7222 - val_loss: 1.6807 - val_accuracy: 0.6582
 Epoch 2/50
-189/189 [==============================] - 22s 117ms/step - loss: 0.7561 - accuracy: 0.8229 - val_loss: 1.3766 - val_accuracy: 0.7091
+189/189 [==============================] - 26s 138ms/step - loss: 1.0658 - accuracy: 0.8200 - val_loss: 1.4561 - val_accuracy: 0.6764
 Epoch 3/50
-189/189 [==============================] - 22s 117ms/step - loss: 0.6433 - accuracy: 0.8350 - val_loss: 0.5845 - val_accuracy: 0.8327
+189/189 [==============================] - 24s 126ms/step - loss: 0.9144 - accuracy: 0.8265 - val_loss: 1.1192 - val_accuracy: 0.7600
 Epoch 4/50
-189/189 [==============================] - 23s 119ms/step - loss: 0.5123 - accuracy: 0.8645 - val_loss: 0.6748 - val_accuracy: 0.7564
+189/189 [==============================] - 24s 127ms/step - loss: 0.7090 - accuracy: 0.8612 - val_loss: 2.7115 - val_accuracy: 0.5091
 Epoch 5/50
-189/189 [==============================] - 22s 116ms/step - loss: 0.4332 - accuracy: 0.8794 - val_loss: 0.7224 - val_accuracy: 0.7600
+189/189 [==============================] - 22s 115ms/step - loss: 0.6043 - accuracy: 0.8660 - val_loss: 1.9403 - val_accuracy: 0.7200
 Epoch 6/50
-189/189 [==============================] - 21s 111ms/step - loss: 0.4008 - accuracy: 0.8867 - val_loss: 0.9268 - val_accuracy: 0.7745
+189/189 [==============================] - 23s 121ms/step - loss: 0.5261 - accuracy: 0.8773 - val_loss: 0.5202 - val_accuracy: 0.8655
 Epoch 7/50
-189/189 [==============================] - 22s 118ms/step - loss: 0.3361 - accuracy: 0.9031 - val_loss: 3.8517 - val_accuracy: 0.3636
+189/189 [==============================] - 22s 117ms/step - loss: 0.4736 - accuracy: 0.8837 - val_loss: 0.9640 - val_accuracy: 0.7127
 Epoch 8/50
-189/189 [==============================] - 23s 119ms/step - loss: 0.3364 - accuracy: 0.9011 - val_loss: 0.2936 - val_accuracy: 0.9018
+189/189 [==============================] - 23s 119ms/step - loss: 0.4242 - accuracy: 0.8880 - val_loss: 0.8451 - val_accuracy: 0.8218
 Epoch 9/50
-189/189 [==============================] - 24s 125ms/step - loss: 0.3064 - accuracy: 0.9111 - val_loss: 0.5111 - val_accuracy: 0.8473
+189/189 [==============================] - 22s 116ms/step - loss: 0.3820 - accuracy: 0.8967 - val_loss: 1.6228 - val_accuracy: 0.6727
 Epoch 10/50
-189/189 [==============================] - 25s 129ms/step - loss: 0.2951 - accuracy: 0.9187 - val_loss: 4.7853 - val_accuracy: 0.5200
+189/189 [==============================] - 21s 114ms/step - loss: 0.3502 - accuracy: 0.9103 - val_loss: 0.2539 - val_accuracy: 0.9455
 Epoch 11/50
-189/189 [==============================] - 29s 153ms/step - loss: 0.2686 - accuracy: 0.9230 - val_loss: 4.3329 - val_accuracy: 0.4182
+189/189 [==============================] - 22s 117ms/step - loss: 0.3270 - accuracy: 0.9121 - val_loss: 1.0307 - val_accuracy: 0.7345
 Epoch 12/50
-189/189 [==============================] - 37s 198ms/step - loss: 0.2708 - accuracy: 0.9232 - val_loss: 0.5336 - val_accuracy: 0.8473
+189/189 [==============================] - 22s 119ms/step - loss: 0.3499 - accuracy: 0.9050 - val_loss: 0.5531 - val_accuracy: 0.8545
 Epoch 13/50
-189/189 [==============================] - 34s 179ms/step - loss: 0.2560 - accuracy: 0.9247 - val_loss: 0.2763 - val_accuracy: 0.9127
+189/189 [==============================] - 22s 116ms/step - loss: 0.3277 - accuracy: 0.9119 - val_loss: 10.7866 - val_accuracy: 0.3273
 Epoch 14/50
-189/189 [==============================] - 27s 141ms/step - loss: 0.2237 - accuracy: 0.9393 - val_loss: 1.3317 - val_accuracy: 0.7818
+189/189 [==============================] - 22s 115ms/step - loss: 0.3083 - accuracy: 0.9179 - val_loss: 0.3012 - val_accuracy: 0.9309
 Epoch 15/50
-189/189 [==============================] - 25s 133ms/step - loss: 0.2380 - accuracy: 0.9353 - val_loss: 2.6943 - val_accuracy: 0.5782
+189/189 [==============================] - 22s 114ms/step - loss: 0.2932 - accuracy: 0.9245 - val_loss: 0.3250 - val_accuracy: 0.9164
 Epoch 16/50
-189/189 [==============================] - 28s 147ms/step - loss: 0.2237 - accuracy: 0.9317 - val_loss: 0.1762 - val_accuracy: 0.9527
+189/189 [==============================] - 22s 114ms/step - loss: 0.2988 - accuracy: 0.9244 - val_loss: 0.2690 - val_accuracy: 0.9091
 Epoch 17/50
-189/189 [==============================] - 26s 137ms/step - loss: 0.2279 - accuracy: 0.9340 - val_loss: 0.1263 - val_accuracy: 0.9600
+189/189 [==============================] - 23s 120ms/step - loss: 0.2609 - accuracy: 0.9313 - val_loss: 0.5102 - val_accuracy: 0.8945
 Epoch 18/50
-189/189 [==============================] - 26s 135ms/step - loss: 0.2205 - accuracy: 0.9373 - val_loss: 0.1590 - val_accuracy: 0.9745
+189/189 [==============================] - 22s 116ms/step - loss: 0.2531 - accuracy: 0.9337 - val_loss: 1.1912 - val_accuracy: 0.7636
 Epoch 19/50
-189/189 [==============================] - 26s 135ms/step - loss: 0.2019 - accuracy: 0.9443 - val_loss: 0.2413 - val_accuracy: 0.9382
+189/189 [==============================] - 22s 116ms/step - loss: 0.2610 - accuracy: 0.9310 - val_loss: 0.1970 - val_accuracy: 0.9564
 Epoch 20/50
-189/189 [==============================] - 25s 132ms/step - loss: 0.1786 - accuracy: 0.9476 - val_loss: 0.1216 - val_accuracy: 0.9745
+189/189 [==============================] - 23s 120ms/step - loss: 0.2524 - accuracy: 0.9363 - val_loss: 0.4641 - val_accuracy: 0.8764
 Epoch 21/50
-189/189 [==============================] - 25s 134ms/step - loss: 0.1778 - accuracy: 0.9496 - val_loss: 1.2557 - val_accuracy: 0.7527
+189/189 [==============================] - 23s 121ms/step - loss: 0.2509 - accuracy: 0.9373 - val_loss: 0.4109 - val_accuracy: 0.8982
 Epoch 22/50
-189/189 [==============================] - 26s 139ms/step - loss: 0.1884 - accuracy: 0.9478 - val_loss: 0.8423 - val_accuracy: 0.8436
+189/189 [==============================] - 26s 135ms/step - loss: 0.2328 - accuracy: 0.9424 - val_loss: 0.7481 - val_accuracy: 0.8145
 Epoch 23/50
-189/189 [==============================] - 23s 122ms/step - loss: 0.2030 - accuracy: 0.9418 - val_loss: 0.3355 - val_accuracy: 0.9164
+189/189 [==============================] - 23s 121ms/step - loss: 0.2328 - accuracy: 0.9408 - val_loss: 0.3380 - val_accuracy: 0.9200
 Epoch 24/50
-189/189 [==============================] - 22s 115ms/step - loss: 0.1843 - accuracy: 0.9456 - val_loss: 0.3169 - val_accuracy: 0.9418
+189/189 [==============================] - 23s 121ms/step - loss: 0.2497 - accuracy: 0.9343 - val_loss: 0.2607 - val_accuracy: 0.9345
 Epoch 25/50
-189/189 [==============================] - 22s 118ms/step - loss: 0.1851 - accuracy: 0.9522 - val_loss: 0.3667 - val_accuracy: 0.8909
+189/189 [==============================] - 23s 121ms/step - loss: 0.2103 - accuracy: 0.9522 - val_loss: 0.3686 - val_accuracy: 0.9164
 Epoch 26/50
-189/189 [==============================] - 22s 115ms/step - loss: 0.1790 - accuracy: 0.9489 - val_loss: 0.1395 - val_accuracy: 0.9491
+189/189 [==============================] - 23s 121ms/step - loss: 0.2000 - accuracy: 0.9517 - val_loss: 0.1628 - val_accuracy: 0.9600
 Epoch 27/50
-189/189 [==============================] - 21s 113ms/step - loss: 0.1598 - accuracy: 0.9546 - val_loss: 0.1448 - val_accuracy: 0.9527
+189/189 [==============================] - 23s 120ms/step - loss: 0.2078 - accuracy: 0.9441 - val_loss: 0.7242 - val_accuracy: 0.8109
 Epoch 28/50
-189/189 [==============================] - 22s 114ms/step - loss: 0.1774 - accuracy: 0.9459 - val_loss: 0.1035 - val_accuracy: 0.9745
+189/189 [==============================] - 23s 119ms/step - loss: 0.2433 - accuracy: 0.9386 - val_loss: 0.1779 - val_accuracy: 0.9636
 Epoch 29/50
-189/189 [==============================] - 21s 113ms/step - loss: 0.1423 - accuracy: 0.9597 - val_loss: 0.2389 - val_accuracy: 0.9600
+189/189 [==============================] - 23s 120ms/step - loss: 0.1997 - accuracy: 0.9522 - val_loss: 0.2772 - val_accuracy: 0.9273
 Epoch 30/50
-189/189 [==============================] - 21s 113ms/step - loss: 0.1428 - accuracy: 0.9590 - val_loss: 0.1195 - val_accuracy: 0.9673
+189/189 [==============================] - 23s 119ms/step - loss: 0.1902 - accuracy: 0.9522 - val_loss: 0.2487 - val_accuracy: 0.9491
 Epoch 31/50
-189/189 [==============================] - 22s 115ms/step - loss: 0.1447 - accuracy: 0.9544 - val_loss: 0.5215 - val_accuracy: 0.8945
+189/189 [==============================] - 23s 120ms/step - loss: 0.1861 - accuracy: 0.9542 - val_loss: 0.7088 - val_accuracy: 0.8473
 Epoch 32/50
-189/189 [==============================] - 21s 113ms/step - loss: 0.1545 - accuracy: 0.9555 - val_loss: 0.0898 - val_accuracy: 0.9745
+189/189 [==============================] - 23s 122ms/step - loss: 0.1979 - accuracy: 0.9521 - val_loss: 0.2040 - val_accuracy: 0.9309
 Epoch 33/50
-189/189 [==============================] - 22s 114ms/step - loss: 0.1648 - accuracy: 0.9549 - val_loss: 0.1534 - val_accuracy: 0.9636
+189/189 [==============================] - 23s 122ms/step - loss: 0.2083 - accuracy: 0.9507 - val_loss: 0.6742 - val_accuracy: 0.8400
 Epoch 34/50
-189/189 [==============================] - 23s 119ms/step - loss: 0.1433 - accuracy: 0.9589 - val_loss: 1.6216 - val_accuracy: 0.7091
+189/189 [==============================] - 22s 117ms/step - loss: 0.1730 - accuracy: 0.9570 - val_loss: 0.1717 - val_accuracy: 0.9636
 Epoch 35/50
-189/189 [==============================] - 22s 115ms/step - loss: 0.1485 - accuracy: 0.9582 - val_loss: 0.9109 - val_accuracy: 0.7564
+189/189 [==============================] - 22s 116ms/step - loss: 0.1777 - accuracy: 0.9565 - val_loss: 0.2908 - val_accuracy: 0.9164
 Epoch 36/50
-189/189 [==============================] - 21s 113ms/step - loss: 0.1322 - accuracy: 0.9615 - val_loss: 0.2503 - val_accuracy: 0.9527
+189/189 [==============================] - 22s 118ms/step - loss: 0.1788 - accuracy: 0.9559 - val_loss: 0.9116 - val_accuracy: 0.8036
 Epoch 37/50
-189/189 [==============================] - 21s 113ms/step - loss: 0.1350 - accuracy: 0.9617 - val_loss: 1.5545 - val_accuracy: 0.7418
+189/189 [==============================] - 23s 120ms/step - loss: 0.1686 - accuracy: 0.9580 - val_loss: 0.3615 - val_accuracy: 0.8909
 Epoch 38/50
-189/189 [==============================] - 21s 112ms/step - loss: 0.1278 - accuracy: 0.9633 - val_loss: 0.1776 - val_accuracy: 0.9564
+189/189 [==============================] - 23s 122ms/step - loss: 0.1811 - accuracy: 0.9560 - val_loss: 0.2694 - val_accuracy: 0.9236
 Epoch 39/50
-189/189 [==============================] - 21s 113ms/step - loss: 0.1457 - accuracy: 0.9574 - val_loss: 0.4687 - val_accuracy: 0.8582
+189/189 [==============================] - 24s 125ms/step - loss: 0.1730 - accuracy: 0.9582 - val_loss: 0.3705 - val_accuracy: 0.8764
 Epoch 40/50
-189/189 [==============================] - 21s 113ms/step - loss: 0.1378 - accuracy: 0.9589 - val_loss: 0.1952 - val_accuracy: 0.9455
+189/189 [==============================] - 23s 119ms/step - loss: 0.2109 - accuracy: 0.9483 - val_loss: 1.9812 - val_accuracy: 0.6764
 Epoch 41/50
-189/189 [==============================] - 21s 112ms/step - loss: 0.1236 - accuracy: 0.9640 - val_loss: 0.0803 - val_accuracy: 0.9782
+189/189 [==============================] - 23s 119ms/step - loss: 0.2021 - accuracy: 0.9541 - val_loss: 0.6908 - val_accuracy: 0.8182
 Epoch 42/50
-189/189 [==============================] - 22s 114ms/step - loss: 0.1148 - accuracy: 0.9647 - val_loss: 0.3080 - val_accuracy: 0.9055
+189/189 [==============================] - 23s 120ms/step - loss: 0.1965 - accuracy: 0.9555 - val_loss: 1.0875 - val_accuracy: 0.8364
 Epoch 43/50
-189/189 [==============================] - 23s 122ms/step - loss: 0.1083 - accuracy: 0.9650 - val_loss: 0.0991 - val_accuracy: 0.9673
+189/189 [==============================] - 23s 122ms/step - loss: 0.1487 - accuracy: 0.9667 - val_loss: 0.1398 - val_accuracy: 0.9782
 Epoch 44/50
-189/189 [==============================] - 22s 116ms/step - loss: 0.1269 - accuracy: 0.9612 - val_loss: 0.1005 - val_accuracy: 0.9673
+189/189 [==============================] - 24s 125ms/step - loss: 0.1576 - accuracy: 0.9609 - val_loss: 0.1048 - val_accuracy: 0.9818
 Epoch 45/50
-189/189 [==============================] - 23s 123ms/step - loss: 0.1172 - accuracy: 0.9637 - val_loss: 0.1578 - val_accuracy: 0.9600
+189/189 [==============================] - 23s 120ms/step - loss: 0.1520 - accuracy: 0.9662 - val_loss: 0.1628 - val_accuracy: 0.9673
 Epoch 46/50
-189/189 [==============================] - 21s 113ms/step - loss: 0.0939 - accuracy: 0.9718 - val_loss: 0.5977 - val_accuracy: 0.8800
+189/189 [==============================] - 23s 120ms/step - loss: 0.1535 - accuracy: 0.9609 - val_loss: 0.2082 - val_accuracy: 0.9418
 Epoch 47/50
-189/189 [==============================] - 22s 117ms/step - loss: 0.1254 - accuracy: 0.9605 - val_loss: 0.2035 - val_accuracy: 0.9418
+189/189 [==============================] - 22s 117ms/step - loss: 0.1476 - accuracy: 0.9662 - val_loss: 0.2977 - val_accuracy: 0.9236
 Epoch 48/50
-189/189 [==============================] - 22s 118ms/step - loss: 0.1198 - accuracy: 0.9633 - val_loss: 0.1831 - val_accuracy: 0.9455
+189/189 [==============================] - 22s 119ms/step - loss: 0.1469 - accuracy: 0.9635 - val_loss: 0.3027 - val_accuracy: 0.9345
 Epoch 49/50
-189/189 [==============================] - 21s 112ms/step - loss: 0.1185 - accuracy: 0.9640 - val_loss: 0.9020 - val_accuracy: 0.8618
+189/189 [==============================] - 23s 122ms/step - loss: 0.1478 - accuracy: 0.9617 - val_loss: 0.1925 - val_accuracy: 0.9636
 Epoch 50/50
-189/189 [==============================] - 21s 111ms/step - loss: 0.0923 - accuracy: 0.9731 - val_loss: 0.0855 - val_accuracy: 0.9782
+189/189 [==============================] - 23s 122ms/step - loss: 0.1297 - accuracy: 0.9668 - val_loss: 0.0827 - val_accuracy: 0.9818
 Eğitim tamamlandı.
 
 Test seti üzerinde model değerlendiriliyor:
-9/9 [==============================] - 0s 32ms/step - loss: 0.0855 - accuracy: 0.9782
-Test Kaybı (Loss): 0.0855
-Test Başarısı (Accuracy): 0.9782
-9/9 [==============================] - 0s 33ms/step
+9/9 [==============================] - 0s 34ms/step - loss: 0.0827 - accuracy: 0.9818
+Test Kaybı (Loss): 0.0827
+Test Başarısı (Accuracy): 0.9818
+Kullanılan aktivasyon fonksiyonu: elu
+9/9 [==============================] - 0s 36ms/step
 
 Sınıflandırma Raporu:
                       precision    recall  f1-score   support
 
-Alternaria Leaf Spot       0.97      1.00      0.99        35
-    Bacterial Blight       0.91      0.98      0.95        44
+Alternaria Leaf Spot       0.97      0.97      0.97        35
+    Bacterial Blight       0.96      0.98      0.97        44
        Fusarium Wilt       1.00      1.00      1.00        67
         Healthy Leaf       1.00      1.00      1.00        67
-   Verticillium Wilt       0.98      0.92      0.95        62
+   Verticillium Wilt       0.97      0.95      0.96        62
 
             accuracy                           0.98       275
-           macro avg       0.97      0.98      0.98       275
+           macro avg       0.98      0.98      0.98       275
         weighted avg       0.98      0.98      0.98       275
+
+
+Model cotton_model_elu.keras olarak kaydediliyor...
+Model başarıyla cotton_model_elu.keras klasörüne kaydedildi.
